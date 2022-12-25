@@ -82,7 +82,14 @@ Mine løsninger til Knowit julekalender 2022.
 
 > 1040.11
 
-
 ## 22 Vannstand
 
 > 26200000
+
+## 23 Bysykkel
+
+> ikke løst
+
+## 24 Kryptert Julehilsen
+
+> gledelig jul!!
