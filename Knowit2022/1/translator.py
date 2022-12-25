@@ -1,0 +1,33 @@
+import csv
+
+originalLetter = "mudiwatsvukumafutamurumemuarimawodzanyembainichidokugamuchiratengamahombekombemudiwamudukukwevagwengaangachetatukatsiinofananidzapanogurudambudzikoyosebvudzizvakafananawayakwoushamwaridenderedzwazvishomanyamasetianoratidzakusingagumimuvirirwizimuromobapiroakerwakafaramushinhiriroimbananeisaanokamuramundarutsokamurumeshepipatinyamamhetesiyapamusorochepirimwanandapotaakatimhinoakarambakusvikayeduyeukayekareChaizvoizvogadziriratatamukateererachingwawekuvambabasamuchetoibwegwengamhinochipimozvechokwadikurumidzahusikuekupedzisirazvinodachikovaipaiyokupedzisirakatsirudyiwakasiyananyanzayadhiwakasiyanachirevovarumechaipoipochikepeChivabvumubvunzochinozunguzirwamanherupedzabatachirevokutevedzapatanichipimohavazodyarikutevedzakuremuviritawandahwarozvakaitikabatsiradandamweyamuberekonyeredzinokukurumidzarefuzvairevatsvakaipaimutsetsezadzashugachiutsizvakajairikamuberekobhorababamuswemahombekombesokutihashabatasokutiiwemunhuhwiguruchubhuchiitochinhuchizivisoTrianglehofisikusarudzavachirihavazodyaritumayakadererayerochenaiyehachomanyakadhimafutanzvimbodengazororogadziriramuchinjikwanomwenokutidividhirikuunzachikafuhurongwakuonayokupedzisiraaizivamisachitsungotasvakambuyunyeredzivendutasvaiweinjiniMachinemubhedhapachakeondabhangizvikuruisatsvukuMachinepadikinokuitarimamugwagwamadokerosanganaakapachaipoipokufemberanhongapabutirokuburikidzapitikotivanotigumbomudziakakuramangwananirasikabhodhimuromochingwanhoroondochinhuaihwasimbapotinjanjirufurorawakakonewamumutongomhosvatsokapachenamiririrakuvakabhachikuchemanonokakwevakambanidzinongoitikanyikarongakamwenzvimbonhambavakadzimusasapenyawakakonewavanokwanisabepaakemutsarazvakaitikarufaromusojapazitakuunzapenyashamisamudiwafomuzororonhegoeheanokoshasetiwekuvambazvanguhwarosanganadetembomudzidzihofisimhomhobapiropozizvinorevafitapachenaunyanzvichirevoquotientsimbimuromokamwemusikanakurumidzapanopachenachitsungomusojayakakwirirachitsuwapakonakurunakapanzvimbomunyumwanakomanakubatanagirinhichibozwazvinogonekadzanguchandozerapatikukarekodhidonjezvekarepatanitsigirozvinopataurachokwadipagomosekamwanakomanakatyamadzabudirirozvichidamusasamanyarutsokapakativerengahavukavushurekukandapamukuruekisiperimendikubatanatendakufemberaakararamuvengikubvumiranatakuragobvumuromovakauyazvemazuvanowanamuenzanisopagomosezvovakatorarusvingogwengazvakakwanadhigiriiinidengahashavakangainjinipanomhenderekedzosokutitungamiraakamhanyagumizvikurutasvakutsanyachinjakurumidzapeyamukomananyanzaunopinzakuroorwabokarunakoakauyachepiricheteteveratekenyajekarudyinzwaChivabvutakuranhongakuvakapenyahashakamurakambuyukubudikidzasetichitsuwaondabipitokubatanachiringazuvazvikuruakanyorachipodondochaiwodhindamepubhuruuitagirinhiruokomudzifuridzahwindovhiritendaiwe"
+letterLength = len(originalLetter)
+
+dictionary = dict()
+with open("dictionary.txt", "r") as d:
+    reader = csv.reader(d)
+    dictionary = {rows[0]:rows[1] for rows in reader}
+
+
+def search(letter, words):
+
+    if len(letter) == 0:
+        finalString = ""
+        for word in words:
+            finalString += dictionary[word] + " "
+        print(len(finalString))
+
+    wordLen = 1
+    while True:
+
+        if wordLen > len(letter):
+            return len(letter)
+
+        currentWord = letter[0:wordLen]
+        if currentWord in dictionary.keys():
+            newWords = words.copy()
+            newWords.append(currentWord)
+            search(letter[wordLen:], newWords)
+        wordLen += 1
+
+search(originalLetter, [])
